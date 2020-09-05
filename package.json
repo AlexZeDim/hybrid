@@ -1,0 +1,19 @@
+{
+  "name": "hybrid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "app.js"
+  },
+  "dependencies": {
+    "@tensorflow-models/posenet": "^2.2.1",
+    "@tensorflow/tfjs-node": "^2.3.0",
+    "@tensorflow/tfjs-node-gpu": "^2.3.0",
+    "recordrtc": "^5.6.1",
+    "recordrtc-nodejs": "^1.0.6"
+  },
+  "devDependencies": {
+    "@tensorflow/tfjs": "^2.3.0"
+  }
+}
