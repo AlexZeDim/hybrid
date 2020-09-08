@@ -15,7 +15,7 @@
 </style>
 
 <title>Conglomerat | HYBRID</title>
-<h1>HYBRID: RecordRTC to Tensorflow.js</h1>
+<h1>HYBRID: Prediction</h1>
 
 <br>
 
@@ -32,10 +32,8 @@
 <!-- Load the coco-ssd model. -->
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
 <!--Tensorflow part -->
-<script src="neuro.js" ></script>
+<script src="stream.js" ></script>
 <script>
-    // Notice there is no 'import' statement. 'cocoSsd' and 'tf' is
-    // available on the index-page because of the script tag above.
 
     let stream = document.querySelector('video');
     stream.load();
