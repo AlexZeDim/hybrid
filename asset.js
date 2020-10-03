@@ -1,7 +1,7 @@
 const Jimp = require('jimp');
 const { createWorker } = require('tesseract.js');
 const captureImage = require('./capture_image');
-const sleep = require('./sleep');
+const { sleep } = require('./getters');
 
 (async function asset () {
     try {

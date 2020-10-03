@@ -1,3 +1,4 @@
+const robot = require("robotjs");
 const Jimp = require('jimp');
 
 const captureImage =  ({ x, y, w, h }) => {

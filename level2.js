@@ -1,7 +1,7 @@
 const Jimp = require('jimp');
 const { createWorker } = require('tesseract.js');
 const captureImage = require('./capture_image');
-const sleep = require('./sleep');
+const { sleep } = require('./getters');
 
 (async function level2 () {
     try {
@@ -10,18 +10,18 @@ const sleep = require('./sleep');
         //first row  x: 408, y: 211, w: 70, h: 20
         const L2 = await captureImage({ x: 405, y: 210, w: 400, h: 415 }).invert().write(`L2.png`).getBufferAsync(Jimp.MIME_PNG)
 
-        const rectangles = [
+        const row = [
             {
-                left: 0,
-                top: 0,
-                width: 500,
-                height: 250,
+                left: 2,
+                top: 1,
+                width: 70,
+                height: 20,
             },
             {
-                left: 500,
-                top: 0,
-                width: 500,
-                height: 250,
+                left: 2,
+                top: 1 + (16 * 20),
+                width: 70,
+                height: 20,
             },
         ];
 
@@ -33,9 +33,9 @@ const sleep = require('./sleep');
             tessedit_char_whitelist: '0123456789',
         });
         const values = [];
-        for (let i = 0; i < rectangles.length; i++) {
-            const { data: { text } } = await worker.recognize(L2, { rectangle: rectangles[i] });
-            values.push(text);
+        for (let i = 0; i < row.length; i++) {
+            const { data: { text } } = await worker.recognize(L2, { rectangle: row[i] });
+            values.push(parseInt(text));
         }
         console.log(values);
         await worker.terminate();
