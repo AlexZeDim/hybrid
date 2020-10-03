@@ -15,33 +15,33 @@ const postOrder = async (price = 9999999, quantity = 1) => {
     }
     await sleep(2500)
     try {
-        robot.setMouseDelay(5);
+        robot.setMouseDelay(1);
 
         /** Mouse on quantity */
-        robot.moveMouseSmooth(250, 300);
+        robot.moveMouse(250, 300);
         robot.mouseClick()
         robot.keyTap("backspace");
-        robot.typeStringDelayed(quantity, 600)
+        robot.typeString(quantity)
 
         /** Mouse on gold */
-        robot.moveMouseSmooth(200, 350);
+        robot.moveMouse(200, 350);
         robot.mouseClick()
         robot.keyTap("backspace");
-        if (gold) robot.typeStringDelayed(gold, 600)
+        if (gold) robot.typeString(gold)
 
         /** Mouse on silver */
-        robot.moveMouseSmooth(280, 350);
+        robot.moveMouse(280, 350);
         robot.mouseClick()
         robot.keyTap("backspace");
-        if (silver) robot.typeStringDelayed(silver, 600)
+        if (silver) robot.typeString(silver)
 
         /** Post Order */
-        robot.moveMouseSmooth(220, 520);
+        robot.moveMouse(220, 520);
         robot.mouseClick()
     } catch (error) {
         console.error(error)
     }
 }
 
-postOrder(9999999, 1)
+module.exports = postOrder;
 
