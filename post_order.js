@@ -1,5 +1,5 @@
 const robot = require("robotjs");
-const { sleep, orderPrice } = require('./getters');
+const { sleep, orderPrice } = require('./module/getters');
 
 const postOrder = async (price = 9999999, quantity = 1) => {
     let gold, silver;

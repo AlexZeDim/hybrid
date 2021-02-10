@@ -1,0 +1,56 @@
+<style>
+    html, body {
+        margin: 0!important;
+        padding: 0!important;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 1em;
+    }
+
+    video {
+        width: 80%;
+        border-radius: 5px;
+        border: 1px solid black;
+    }
+</style>
+
+<title>Conglomerat | HYBRID</title>
+<h1>HYBRID: Prediction</h1>
+
+<br>
+
+<button id="btn-start-recording">Start Recording</button>
+<button id="btn-stop-recording" disabled>Stop Recording</button>
+
+<hr>
+<video controls autoplay playsinline></video>
+<hr>
+<!-- RecordRTC -->
+<script src="node_modules/recordrtc/RecordRTC.js"></script>
+<!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+<!-- Load the coco-ssd model. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+<!--Tensorflow part -->
+<script src="stream.js" ></script>
+<script>
+
+    let stream = document.querySelector('video');
+    stream.load();
+
+    (async () => {
+        try {
+            let model = await cocoSsd.load();
+            console.log('I LIVE')
+            await setInterval(function() {
+                model.detect(stream).then(predictions => {
+                    console.log('Predictions: ', predictions);
+                });
+            }, 10000);
+        } catch (e) {
+            console.error(e)
+        }
+    })();
+</script>
+
+<br><br>
