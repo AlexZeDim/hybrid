@@ -8,7 +8,7 @@ const RuMap = {
   "я": 'z', "ч": 'x', "с": 'c', "м": 'v', "и": 'b', "т": 'n', "ь": 'm', "б": '@18-@96-@98-@98-@101', "ю": '@18-@96-@98-@101-@100',
 };
 
-async function MailForward ({recipient, subject, context = 'Гнев Карателя Очка', repeat_times = 1}) {
+async function mailForward ({recipient, subject, context = 'Гнев Карателя Очка', repeat_times = 1}) {
   try {
     if (!recipient) return
     if (repeat_times < 1) return
@@ -83,5 +83,5 @@ async function MailForward ({recipient, subject, context = 'Гнев Карат�
   }
 }
 
-MailForward({ recipient:'лакриель', subject: 'привет', context: 'фнужсеюена', repeat_times: 1})
+mailForward({ recipient:'лакриель', subject: 'привет', context: 'фнужсеюена', repeat_times: 1})
 
